@@ -1,0 +1,49 @@
+# Deploy Cairo Contract 
+
+protostar build
+protostar -p testnet deploy ./build/main.json --network testnet
+protostar -p testnet deploy ./build/Bridgenft.json --network testnet
+npx hardhat --network goerli deploy
+deploy solidity 
+call deploy.sh
+npx hardhat run --network localhost main.js 
+
+Contract class hash : 0x3beb250d81edd34b6b05c0b24d84ab0e29793618eb6c6319df9ebe9b9a392c0
+
+
+
+
+Current_Gateway : 0x0545ab020d61f8e8c99d85702f724361b50c37b426d5184857e0250bd7cb592f
+
+
+
+protostar -p testnet invoke \
+    --contract-address ${L2_GATEWAY_ADDRESS} \
+    --function initialize \
+    --account-address "0x070f8E809C6Cc1Ba7b1dfB721541D1227aBC19BcF0A7b85D6A13EBb3a3ee7Df4" \
+    --private-key-path ./pk \
+    --network testnet \
+    --max-fee auto \
+    --inputs "${L1_GATEWAY_ADDRESS}" "0xdb7095fdede6c8c2b63b96e0b3c382dc7661f710643d073f7bbd0f677ae447" 
+
+
+
+protostar -p testnet invoke \
+    --contract-address ${L2_GATEWAY_ADDRESS} \
+    --function stake \
+    --account-address "0x070f8E809C6Cc1Ba7b1dfB721541D1227aBC19BcF0A7b85D6A13EBb3a3ee7Df4" \
+    --private-key-path ./pk \
+    --network testnet \
+    --max-fee auto \
+    --inputs "10000000000000000" 
+
+
+
+protostar -p testnet invoke \
+    --contract-address ${L2_GATEWAY_ADDRESS} \
+    --function bridge_debug \
+    --account-address "0x070f8E809C6Cc1Ba7b1dfB721541D1227aBC19BcF0A7b85D6A13EBb3a3ee7Df4" \
+    --private-key-path ./pk \
+    --network testnet \
+    --max-fee auto \
+    --inputs "0xfb46D77E67a59Cf985d56aF1aF19c51cEB6206ea" "0x070f8E809C6Cc1Ba7b1dfB721541D1227aBC19BcF0A7b85D6A13EBb3a3ee7Df4" "0xfb46D77E67a59Cf985d56aF1aF19c51cEB6206ea" "0" "10000000000000000"  "0x5a643907b9a4bc6a55e9069c4fd5fd1f5c79a22470690f75556c4736e34426" 

@@ -1,0 +1,16 @@
+[project]
+protostar-version = "0.8.1"
+lib-path = "lib"
+
+[contracts]
+main = ["src/bridge-backup.cairo"]
+Bridgenft = ["src/Bridgenft.cairo"]
+token = ["src/token.cairo"]
+
+["profile.devnet.protostar.deploy"]
+gateway-url="http://127.0.0.1:5050/"
+
+["profile.testnet.protostar.deploy"]
+network="testnet"
+
+
